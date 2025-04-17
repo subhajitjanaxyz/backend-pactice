@@ -4,13 +4,15 @@
   "description": "learn backend ",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev":"nodemon src/index.js"
+
   },
   "keywords": [
     "js",
     "and",
     "backend"
   ],
+  "type": "module",
   "author": "subhajit",
   "license": "ISC"
 }
