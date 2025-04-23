@@ -1,5 +1,4 @@
 import express from "express";
-import userRouter from "./routes/user.routes.js";
 import cookieParser from "cookie-parser";
 import "dotenv/config";
 import cors from "cors";
@@ -32,7 +31,9 @@ app.use(cookieParser());
 
 
 
-app.use("/a",userRouter)
+//route
+import userRouter from "./routes/user.routes.js";
+app.use("/api/v1/users",userRouter)
 
 
 export { app };

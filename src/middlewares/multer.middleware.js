@@ -1,3 +1,4 @@
+import multer from "multer"
 const storage = multer.diskStorage({
 
     // key:1 its define were i saved 
@@ -11,4 +12,4 @@ const storage = multer.diskStorage({
     }
   })
   
-  const upload = multer({storage })
+ export const upload = multer({storage })

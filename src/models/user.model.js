@@ -50,20 +50,39 @@ const userSchema=new Schema(
         timestamps: true
     }
 )
-//add new function 
+
+//dont use arrow function because arrow functin does not have "this" reference
+
+
+
+//run this before save-create document 
+//this function encrypted password fields value
+userSchema.pre("save",async function(next){
+    if(this.isModified("password")){
+        this.password= await bcrypt.hash(this.password, 10)
+    }
+    
+        next()
+    })
+    
+
+
+
+//this means documets
+
+
+
+//isPasswordCorrect is function that access in document that create by the "User" model || like document.function()
 userSchema.methods.isPasswordCorrect= async function (password) {
    return await bcrypt.compare(password,this.password)
+   
     
 }
 
-//dont use arrow function because arrow functin does not have "this" reference
-userSchema.pre("save",async function(next){
-if(this.isModified("password")){
-    this.password= bcrypt.hash(this.password, 10)
-}
 
-    next()
-})
+
+
+//generateAccessToken is function that access in document that create by the "User" model
 userSchema.methods.generateAccessToken=function(){
     return jwt.sign(
         { 
@@ -79,6 +98,8 @@ userSchema.methods.generateAccessToken=function(){
         }
     )
 }
+
+//generateRefreshToken is function that access in document that create by the User
 userSchema.methods.generateRefreshToken=function(){
     return jwt.sign(
         { 

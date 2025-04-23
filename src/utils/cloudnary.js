@@ -7,7 +7,7 @@ import fs from "fs";
         api_secret: process.env.API_SECRECT
     });
 
-const uploadOnCloudinary= async (localFilePath)=>{
+export const uploadOnCloudinary= async (localFilePath)=>{
 try {
     if(!localFilePath) return null// if file does not exit just return
     //now upload file on cloudinary
